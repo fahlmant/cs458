@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <title>U.S. Map</title>
+  </head>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/raphael.js"></script>
+  <script src="js/jquery.usmap.js"></script>
+
+  <div id="map" style="width: 700px; height: 500px;"></div>
+  <div id="clicked-state"></div>
+
+  <script>
+  $('#map').usmap({
+
+    // The click action
+    click: function(event, data) {
+      $('#clicked-state')
+        .text('You clicked: '+data.name)
+        .parent().effect('highlight', {color: '#C7F464'}, 2000);
+    },
+    stateStyles: {fill: 'blue'},
+    stateHoverStyles: {fill: 'red'}
+  });
+  </script>
+
+</html>
