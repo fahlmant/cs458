@@ -14,11 +14,11 @@
 	  }
 	</style>
 	
-	<script src="../lib/raphael.js"></script>
+	<script src="../js/raphael.js"></script>
 	<!-- <script src="scale.raphael.js"></script> -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
 	<script src="color.jquery.js"></script>
-	<script src="../us-map.js"></script>
+	<script src="../js/jquery.usmap.js"></script>
 	
 	<script>
 	$(document).ready(function() {
@@ -31,8 +31,9 @@
 	    },
 	    
 	    'mouseoverState': {
-	      'HI' : function(event, data) {
-	        //return false;
+	      'OR' : function(event, data) {
+	       $('#alert')
+             .text('Click '+data.name+' on map 1');
 	      }
 	    },
 	    
