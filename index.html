@@ -22,6 +22,12 @@
         .text('You clicked: '+data.name)
         .parent().effect('highlight', {color: '#C7F464'}, 2000);
     },
+    'mouseoverState': {
+        'OR' : function(event, data) {
+            $('#clicked-state')
+            .text('Click '+data.name+'');
+        }
+    },
     stateStyles: {fill: 'green'},
     stateHoverStyles: {fill: 'orange'},
     stateSpecificHoverStyles: {
