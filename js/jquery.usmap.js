@@ -51,7 +51,678 @@
   var WIDTH = 930,
       HEIGHT = 630,
       LABELS_WIDTH = 70;
+
   
+  var allData = [
+  {
+    "state" : "AK",
+    "votes_romney" : 164676,
+    "votes_obama" : 122640,
+    "votes_total" : 287316,
+    "spend_total" : 46198.16,
+    "spend_obama" : 29337.690000000006,
+    "spend_romney" : 16860.47,
+    "perc_votes_romney" : 0.5732,
+    "perc_votes_obama" : 0.4268,
+    "perc_spend_romney" : 0.36495977328967216,
+    "perc_spend_obama" : 0.6350402267103279
+  },
+  {
+    "state" : "AL",
+    "votes_romney" : 1255925,
+    "votes_obama" : 795696,
+    "votes_total" : 2051621,
+    "spend_total" : 219556.69,
+    "spend_obama" : 167152.12,
+    "spend_romney" : 52404.57,
+    "perc_votes_romney" : 0.6122,
+    "perc_votes_obama" : 0.3878,
+    "perc_spend_romney" : 0.2386835491097994,
+    "perc_spend_obama" : 0.7613164508902006
+  },
+  {
+    "state" : "AR",
+    "votes_romney" : 647744,
+    "votes_obama" : 394409,
+    "votes_total" : 1042153,
+    "spend_total" : 195446.21,
+    "spend_obama" : 151854.16,
+    "spend_romney" : 43592.049999999996,
+    "perc_votes_romney" : 0.6215,
+    "perc_votes_obama" : 0.3785,
+    "perc_spend_romney" : 0.22303860484171065,
+    "perc_spend_obama" : 0.7769613951582894
+  },
+  {
+    "state" : "AZ",
+    "votes_romney" : 1233654,
+    "votes_obama" : 1025232,
+    "votes_total" : 2258886,
+    "spend_total" : 3528359.0400000676,
+    "spend_obama" : 2155182.3000000343,
+    "spend_romney" : 1373176.7400000333,
+    "perc_votes_romney" : 0.5461,
+    "perc_votes_obama" : 0.4539,
+    "perc_spend_romney" : 0.3891828253396817,
+    "perc_spend_obama" : 0.6108171746603183
+  },
+  {
+    "state" : "CA",
+    "votes_romney" : 4839958,
+    "votes_obama" : 7854285,
+    "votes_total" : 12694243,
+    "spend_total" : 32141384.979999714,
+    "spend_obama" : 22819784.409999717,
+    "spend_romney" : 9321600.569999998,
+    "perc_votes_romney" : 0.3813,
+    "perc_votes_obama" : 0.6187,
+    "perc_spend_romney" : 0.29001863410056705,
+    "perc_spend_obama" : 0.7099813658994331
+  },
+  {
+    "state" : "CO",
+    "votes_romney" : 1185050,
+    "votes_obama" : 1322998,
+    "votes_total" : 2508048,
+    "spend_total" : 5329520.970000003,
+    "spend_obama" : 4834219.160000004,
+    "spend_romney" : 495301.8099999995,
+    "perc_votes_romney" : 0.4725,
+    "perc_votes_obama" : 0.5275,
+    "perc_spend_romney" : 0.09293552137013153,
+    "perc_spend_obama" : 0.9070644786298684
+  },
+  {
+    "state" : "CT",
+    "votes_romney" : 634892,
+    "votes_obama" : 905083,
+    "votes_total" : 1539975,
+    "spend_total" : 657958.2199999997,
+    "spend_obama" : 138050.35999999993,
+    "spend_romney" : 519907.85999999975,
+    "perc_votes_romney" : 0.4123,
+    "perc_votes_obama" : 0.5877,
+    "perc_spend_romney" : 0.790183698898085,
+    "perc_spend_obama" : 0.20981630110191493
+  },
+  {
+    "state" : "DC",
+    "votes_romney" : 21381,
+    "votes_obama" : 267070,
+    "votes_total" : 288451,
+    "spend_total" : 498497800.41000223,
+    "spend_obama" : 496601366.08000225,
+    "spend_romney" : 1896434.3300000015,
+    "perc_votes_romney" : 0.0741,
+    "perc_votes_obama" : 0.9259,
+    "perc_spend_romney" : 0.003804298290664935,
+    "perc_spend_obama" : 0.9961957017093351
+  },
+  {
+    "state" : "DE",
+    "votes_romney" : 165484,
+    "votes_obama" : 242584,
+    "votes_total" : 408068,
+    "spend_total" : 97079.02999999998,
+    "spend_obama" : 86186.15999999999,
+    "spend_romney" : 10892.87,
+    "perc_votes_romney" : 0.4055,
+    "perc_votes_obama" : 0.5945,
+    "perc_spend_romney" : 0.11220620972418043,
+    "perc_spend_obama" : 0.8877937902758196
+  },
+  {
+    "state" : "FL",
+    "votes_romney" : 4163447,
+    "votes_obama" : 4237756,
+    "votes_total" : 8401203,
+    "spend_total" : 18977290.19999998,
+    "spend_obama" : 6523799.439999974,
+    "spend_romney" : 12453490.760000005,
+    "perc_votes_romney" : 0.4956,
+    "perc_votes_obama" : 0.5044,
+    "perc_spend_romney" : 0.6562312442268505,
+    "perc_spend_obama" : 0.34376875577314936
+  },
+  {
+    "state" : "GA",
+    "votes_romney" : 2078688,
+    "votes_obama" : 1773827,
+    "votes_total" : 3852515,
+    "spend_total" : 4841469.420000061,
+    "spend_obama" : 1756032.3600000532,
+    "spend_romney" : 3085437.060000008,
+    "perc_votes_romney" : 0.5396,
+    "perc_votes_obama" : 0.4604,
+    "perc_spend_romney" : 0.6372935140835753,
+    "perc_spend_obama" : 0.36270648591642474
+  },
+  {
+    "state" : "HI",
+    "votes_romney" : 121015,
+    "votes_obama" : 306658,
+    "votes_total" : 427673,
+    "spend_total" : 71301.11000000003,
+    "spend_obama" : 65051.61000000002,
+    "spend_romney" : 6249.500000000001,
+    "perc_votes_romney" : 0.2830,
+    "perc_votes_obama" : 0.7170,
+    "perc_spend_romney" : 0.08764940686056638,
+    "perc_spend_obama" : 0.9123505931394336
+  },
+  {
+    "state" : "IA",
+    "votes_romney" : 730617,
+    "votes_obama" : 822544,
+    "votes_total" : 1553161,
+    "spend_total" : 6456975.319999997,
+    "spend_obama" : 3223344.529999996,
+    "spend_romney" : 3233630.7900000005,
+    "perc_votes_romney" : 0.4704,
+    "perc_votes_obama" : 0.5296,
+    "perc_spend_romney" : 0.5007965231002312,
+    "perc_spend_obama" : 0.4992034768997689
+  },
+  {
+    "state" : "ID",
+    "votes_romney" : 420911,
+    "votes_obama" : 212787,
+    "votes_total" : 633698,
+    "spend_total" : 122944.32,
+    "spend_obama" : 68487.6,
+    "spend_romney" : 54456.72,
+    "perc_votes_romney" : 0.6642,
+    "perc_votes_obama" : 0.3358,
+    "perc_spend_romney" : 0.4429380714782106,
+    "perc_spend_obama" : 0.5570619285217894
+  },
+  {
+    "state" : "IL",
+    "votes_romney" : 2135216,
+    "votes_obama" : 3019512,
+    "votes_total" : 5154728,
+    "spend_total" : 63435649.0899995,
+    "spend_obama" : 59986514.96999947,
+    "spend_romney" : 3449134.12000003,
+    "perc_votes_romney" : 0.4142,
+    "perc_votes_obama" : 0.5858,
+    "perc_spend_romney" : 0.05437217352511932,
+    "perc_spend_obama" : 0.9456278264748808
+  },
+  {
+    "state" : "IN",
+    "votes_romney" : 1420543,
+    "votes_obama" : 1152887,
+    "votes_total" : 2573430,
+    "spend_total" : 335294.4599999999,
+    "spend_obama" : 261925.2499999999,
+    "spend_romney" : 73369.21,
+    "perc_votes_romney" : 0.5520,
+    "perc_votes_obama" : 0.4480,
+    "perc_spend_romney" : 0.21882022745022398,
+    "perc_spend_obama" : 0.7811797725497761
+  },
+  {
+    "state" : "KS",
+    "votes_romney" : 692634,
+    "votes_obama" : 440726,
+    "votes_total" : 1133360,
+    "spend_total" : 100882.24000000003,
+    "spend_obama" : 88819.90000000004,
+    "spend_romney" : 12062.34,
+    "perc_votes_romney" : 0.6111,
+    "perc_votes_obama" : 0.3889,
+    "perc_spend_romney" : 0.11956851870061565,
+    "perc_spend_obama" : 0.8804314812993844
+  },
+  {
+    "state" : "KY",
+    "votes_romney" : 1087190,
+    "votes_obama" : 679370,
+    "votes_total" : 1766560,
+    "spend_total" : 288621.65999999986,
+    "spend_obama" : 67142.17999999998,
+    "spend_romney" : 221479.4799999999,
+    "perc_votes_romney" : 0.6154,
+    "perc_votes_obama" : 0.3846,
+    "perc_spend_romney" : 0.7673695730251153,
+    "perc_spend_obama" : 0.23263042697488473
+  },
+  {
+    "state" : "LA",
+    "votes_romney" : 1152262,
+    "votes_obama" : 809141,
+    "votes_total" : 1961403,
+    "spend_total" : 310319.5599999999,
+    "spend_obama" : 179819.6899999999,
+    "spend_romney" : 130499.87,
+    "perc_votes_romney" : 0.5875,
+    "perc_votes_obama" : 0.4125,
+    "perc_spend_romney" : 0.42053382004021933,
+    "perc_spend_obama" : 0.5794661799597807
+  },
+  {
+    "state" : "MA",
+    "votes_romney" : 1188314,
+    "votes_obama" : 1921290,
+    "votes_total" : 3109604,
+    "spend_total" : 282204282.57999855,
+    "spend_obama" : 5063843.639999987,
+    "spend_romney" : 277140438.93999857,
+    "perc_votes_romney" : 0.3821,
+    "perc_votes_obama" : 0.6179,
+    "perc_spend_romney" : 0.9820561063294123,
+    "perc_spend_obama" : 0.017943893670587727
+  },
+  {
+    "state" : "MD",
+    "votes_romney" : 971869,
+    "votes_obama" : 1677844,
+    "votes_total" : 2649713,
+    "spend_total" : 6660319.200000005,
+    "spend_obama" : 3354012.710000002,
+    "spend_romney" : 3306306.4900000035,
+    "perc_votes_romney" : 0.3668,
+    "perc_votes_obama" : 0.6332,
+    "perc_spend_romney" : 0.4964186235999021,
+    "perc_spend_obama" : 0.5035813764000979
+  },
+  {
+    "state" : "ME",
+    "votes_romney" : 292276,
+    "votes_obama" : 401306,
+    "votes_total" : 693582,
+    "spend_total" : 151152.79000000004,
+    "spend_obama" : 129769.66000000005,
+    "spend_romney" : 21383.129999999997,
+    "perc_votes_romney" : 0.4214,
+    "perc_votes_obama" : 0.5786,
+    "perc_spend_romney" : 0.14146698846908476,
+    "perc_spend_obama" : 0.8585330115309153
+  },
+  {
+    "state" : "MI",
+    "votes_romney" : 2115256,
+    "votes_obama" : 2564569,
+    "votes_total" : 4679825,
+    "spend_total" : 1573339.1199999992,
+    "spend_obama" : 862550.3799999997,
+    "spend_romney" : 710788.7399999996,
+    "perc_votes_romney" : 0.4520,
+    "perc_votes_obama" : 0.5480,
+    "perc_spend_romney" : 0.45177084263944317,
+    "perc_spend_obama" : 0.5482291573605569
+  },
+  {
+    "state" : "MN",
+    "votes_romney" : 1320225,
+    "votes_obama" : 1546167,
+    "votes_total" : 2866392,
+    "spend_total" : 21730975.66000001,
+    "spend_obama" : 1290642.5200000003,
+    "spend_romney" : 20440333.14000001,
+    "perc_votes_romney" : 0.4606,
+    "perc_votes_obama" : 0.5394,
+    "perc_spend_romney" : 0.9406081650362496,
+    "perc_spend_obama" : 0.05939183496375052
+  },
+  {
+    "state" : "MO",
+    "votes_romney" : 1482440,
+    "votes_obama" : 1223796,
+    "votes_total" : 2706236,
+    "spend_total" : 28143122.82,
+    "spend_obama" : 13242984.120000003,
+    "spend_romney" : 14900138.7,
+    "perc_votes_romney" : 0.5478,
+    "perc_votes_obama" : 0.4522,
+    "perc_spend_romney" : 0.5294415547023505,
+    "perc_spend_obama" : 0.47055844529764956
+  },
+  {
+    "state" : "MS",
+    "votes_romney" : 710746,
+    "votes_obama" : 562949,
+    "votes_total" : 1273695,
+    "spend_total" : 68509.04999999999,
+    "spend_obama" : 51760.36,
+    "spend_romney" : 16748.689999999995,
+    "perc_votes_romney" : 0.5580,
+    "perc_votes_obama" : 0.4420,
+    "perc_spend_romney" : 0.2444741242215444,
+    "perc_spend_obama" : 0.7555258757784556
+  },
+  {
+    "state" : "MT",
+    "votes_romney" : 267928,
+    "votes_obama" : 201839,
+    "votes_total" : 469767,
+    "spend_total" : 84218.79000000002,
+    "spend_obama" : 65980.92000000003,
+    "spend_romney" : 18237.87,
+    "perc_votes_romney" : 0.5703,
+    "perc_votes_obama" : 0.4297,
+    "perc_spend_romney" : 0.2165534555887112,
+    "perc_spend_obama" : 0.7834465444112888
+  },
+  {
+    "state" : "NC",
+    "votes_romney" : 2270395,
+    "votes_obama" : 2178391,
+    "votes_total" : 4448786,
+    "spend_total" : 1978537.279999999,
+    "spend_obama" : 1723368.8899999992,
+    "spend_romney" : 255168.38999999998,
+    "perc_votes_romney" : 0.5103,
+    "perc_votes_obama" : 0.4897,
+    "perc_spend_romney" : 0.12896819917388674,
+    "perc_spend_obama" : 0.8710318008261133
+  },
+  {
+    "state" : "ND",
+    "votes_romney" : 188320,
+    "votes_obama" : 124966,
+    "votes_total" : 313286,
+    "spend_total" : 37015.98,
+    "spend_obama" : 34902.94,
+    "spend_romney" : 2113.04,
+    "perc_votes_romney" : 0.6011,
+    "perc_votes_obama" : 0.3989,
+    "perc_spend_romney" : 0.057084534841438744,
+    "perc_spend_obama" : 0.9429154651585613
+  },
+  {
+    "state" : "NE",
+    "votes_romney" : 475064,
+    "votes_obama" : 302081,
+    "votes_total" : 777145,
+    "spend_total" : 460188.8499999996,
+    "spend_obama" : 424792.00999999966,
+    "spend_romney" : 35396.83999999999,
+    "perc_votes_romney" : 0.6113,
+    "perc_votes_obama" : 0.3887,
+    "perc_spend_romney" : 0.0769180739602883,
+    "perc_spend_obama" : 0.9230819260397117
+  },
+  {
+    "state" : "NH",
+    "votes_romney" : 329918,
+    "votes_obama" : 369561,
+    "votes_total" : 699479,
+    "spend_total" : 40526689.89000007,
+    "spend_obama" : 610323.9299999995,
+    "spend_romney" : 39916365.96000007,
+    "perc_votes_romney" : 0.4717,
+    "perc_votes_obama" : 0.5283,
+    "perc_spend_romney" : 0.9849401978879455,
+    "perc_spend_obama" : 0.015059802112054469
+  },
+  {
+    "state" : "NJ",
+    "votes_romney" : 1478088,
+    "votes_obama" : 2122786,
+    "votes_total" : 3600874,
+    "spend_total" : 3292348.1899999897,
+    "spend_obama" : 864070.1499999998,
+    "spend_romney" : 2428278.03999999,
+    "perc_votes_romney" : 0.4105,
+    "perc_votes_obama" : 0.5895,
+    "perc_spend_romney" : 0.7375520145091329,
+    "perc_spend_obama" : 0.26244798549086706
+  },
+  {
+    "state" : "NM",
+    "votes_romney" : 335788,
+    "votes_obama" : 415335,
+    "votes_total" : 751123,
+    "spend_total" : 890754.0799999996,
+    "spend_obama" : 291690.6399999996,
+    "spend_romney" : 599063.4400000001,
+    "perc_votes_romney" : 0.4470,
+    "perc_votes_obama" : 0.5530,
+    "perc_spend_romney" : 0.6725351625669795,
+    "perc_spend_obama" : 0.3274648374330205
+  },
+  {
+    "state" : "NV",
+    "votes_romney" : 463567,
+    "votes_obama" : 531373,
+    "votes_total" : 994940,
+    "spend_total" : 2522198.5699999984,
+    "spend_obama" : 1421740.319999999,
+    "spend_romney" : 1100458.2499999998,
+    "perc_votes_romney" : 0.4659,
+    "perc_votes_obama" : 0.5341,
+    "perc_spend_romney" : 0.4363091245428787,
+    "perc_spend_obama" : 0.5636908754571215
+  },
+  {
+    "state" : "NY",
+    "votes_romney" : 2145628,
+    "votes_obama" : 4018385,
+    "votes_total" : 6164013,
+    "spend_total" : 9697983.399999963,
+    "spend_obama" : 6603660.5600000275,
+    "spend_romney" : 3094322.839999935,
+    "perc_votes_romney" : 0.3481,
+    "perc_votes_obama" : 0.6519,
+    "perc_spend_romney" : 0.3190686880326014,
+    "perc_spend_obama" : 0.6809313119673985
+  },
+  {
+    "state" : "OH",
+    "votes_romney" : 2661407,
+    "votes_obama" : 2827621,
+    "votes_total" : 5489028,
+    "spend_total" : 6356014.409999999,
+    "spend_obama" : 4658618.859999997,
+    "spend_romney" : 1697395.5500000026,
+    "perc_votes_romney" : 0.4849,
+    "perc_votes_obama" : 0.5151,
+    "perc_spend_romney" : 0.2670534458401272,
+    "perc_spend_obama" : 0.7329465541598729
+  },
+  {
+    "state" : "OK",
+    "votes_romney" : 891325,
+    "votes_obama" : 443547,
+    "votes_total" : 1334872,
+    "spend_total" : 780666.9399999992,
+    "spend_obama" : 728785.7299999993,
+    "spend_romney" : 51881.209999999985,
+    "perc_votes_romney" : 0.6677,
+    "perc_votes_obama" : 0.3323,
+    "perc_spend_romney" : 0.06645754718395022,
+    "perc_spend_obama" : 0.9335424528160499
+  },
+  {
+    "state" : "OR",
+    "votes_romney" : 754175,
+    "votes_obama" : 970488,
+    "votes_total" : 1724663,
+    "spend_total" : 211893.9600000001,
+    "spend_obama" : 181087.2400000001,
+    "spend_romney" : 30806.72,
+    "perc_votes_romney" : 0.4373,
+    "perc_votes_obama" : 0.5627,
+    "perc_spend_romney" : 0.14538743813179,
+    "perc_spend_obama" : 0.85461256186821
+  },
+  {
+    "state" : "PA",
+    "votes_romney" : 2680434,
+    "votes_obama" : 2990274,
+    "votes_total" : 5670708,
+    "spend_total" : 2944808.660000001,
+    "spend_obama" : 864600.8799999998,
+    "spend_romney" : 2080207.7800000014,
+    "perc_votes_romney" : 0.4727,
+    "perc_votes_obama" : 0.5273,
+    "perc_spend_romney" : 0.7063982825967378,
+    "perc_spend_obama" : 0.2936017174032623
+  },
+  {
+    "state" : "RI",
+    "votes_romney" : 157204,
+    "votes_obama" : 279677,
+    "votes_total" : 436881,
+    "spend_total" : 2165461.9400000004,
+    "spend_obama" : 2100650.4400000004,
+    "spend_romney" : 64811.500000000015,
+    "perc_votes_romney" : 0.3598,
+    "perc_votes_obama" : 0.6402,
+    "perc_spend_romney" : 0.029929641709611394,
+    "perc_spend_obama" : 0.9700703582903886
+  },
+  {
+    "state" : "SC",
+    "votes_romney" : 1071645,
+    "votes_obama" : 865941,
+    "votes_total" : 1937586,
+    "spend_total" : 791097.26,
+    "spend_obama" : 344508.7299999999,
+    "spend_romney" : 446588.53000000014,
+    "perc_votes_romney" : 0.5531,
+    "perc_votes_obama" : 0.4469,
+    "perc_spend_romney" : 0.5645178571342797,
+    "perc_spend_obama" : 0.43548214286572035
+  },
+  {
+    "state" : "SD",
+    "votes_romney" : 210610,
+    "votes_obama" : 145039,
+    "votes_total" : 355649,
+    "spend_total" : 29112.399999999998,
+    "spend_obama" : 20792.309999999998,
+    "spend_romney" : 8320.09,
+    "perc_votes_romney" : 0.5922,
+    "perc_votes_obama" : 0.4078,
+    "perc_spend_romney" : 0.28579196493590364,
+    "perc_spend_obama" : 0.7142080350640964
+  },
+  {
+    "state" : "TN",
+    "votes_romney" : 1462330,
+    "votes_obama" : 960709,
+    "votes_total" : 2423039,
+    "spend_total" : 2387985.190000002,
+    "spend_obama" : 256448.03999999995,
+    "spend_romney" : 2131537.150000002,
+    "perc_votes_romney" : 0.6035,
+    "perc_votes_obama" : 0.3965,
+    "perc_spend_romney" : 0.8926090324705909,
+    "perc_spend_obama" : 0.10739096752940908
+  },
+  {
+    "state" : "TX",
+    "votes_romney" : 4569843,
+    "votes_obama" : 3308124,
+    "votes_total" : 7877967,
+    "spend_total" : 13235016.089999842,
+    "spend_obama" : 6747696.189999825,
+    "spend_romney" : 6487319.900000016,
+    "perc_votes_romney" : 0.5801,
+    "perc_votes_obama" : 0.4199,
+    "perc_spend_romney" : 0.4901633557439894,
+    "perc_spend_obama" : 0.5098366442560106
+  },
+  {
+    "state" : "UT",
+    "votes_romney" : 740600,
+    "votes_obama" : 251813,
+    "votes_total" : 992413,
+    "spend_total" : 606504.4100000003,
+    "spend_obama" : 156762.29000000018,
+    "spend_romney" : 449742.12000000005,
+    "perc_votes_romney" : 0.7463,
+    "perc_votes_obama" : 0.2537,
+    "perc_spend_romney" : 0.7415314919144609,
+    "perc_spend_obama" : 0.25846850808553906
+  },
+  {
+    "state" : "VA",
+    "votes_romney" : 1822522,
+    "votes_obama" : 1971820,
+    "votes_total" : 3794342,
+    "spend_total" : 43972518.42000001,
+    "spend_obama" : 6240318.1,
+    "spend_romney" : 37732200.32000001,
+    "perc_votes_romney" : 0.4803,
+    "perc_votes_obama" : 0.5197,
+    "perc_spend_romney" : 0.8580859517665989,
+    "perc_spend_obama" : 0.1419140482334011
+  },
+  {
+    "state" : "VT",
+    "votes_romney" : 92698,
+    "votes_obama" : 199239,
+    "votes_total" : 291937,
+    "spend_total" : 91496.64999999998,
+    "spend_obama" : 69804.92999999998,
+    "spend_romney" : 21691.72,
+    "perc_votes_romney" : 0.3175,
+    "perc_votes_obama" : 0.6825,
+    "perc_spend_romney" : 0.23707665799786118,
+    "perc_spend_obama" : 0.7629233420021388
+  },
+  {
+    "state" : "WA",
+    "votes_romney" : 1290670,
+    "votes_obama" : 1755396,
+    "votes_total" : 3046066,
+    "spend_total" : 6079157.780000012,
+    "spend_obama" : 5300793.640000015,
+    "spend_romney" : 778364.1399999983,
+    "perc_votes_romney" : 0.4237,
+    "perc_votes_obama" : 0.5763,
+    "perc_spend_romney" : 0.12803815399573273,
+    "perc_spend_obama" : 0.8719618460042674
+  },
+  {
+    "state" : "WI",
+    "votes_romney" : 1407966,
+    "votes_obama" : 1620985,
+    "votes_total" : 3028951,
+    "spend_total" : 32090400.250000022,
+    "spend_obama" : 31451556.280000024,
+    "spend_romney" : 638843.9699999992,
+    "perc_votes_romney" : 0.4648,
+    "perc_votes_obama" : 0.5352,
+    "perc_spend_romney" : 0.01990763483855265,
+    "perc_spend_obama" : 0.9800923651614474
+  },
+  {
+    "state" : "WV",
+    "votes_romney" : 417584,
+    "votes_obama" : 238230,
+    "votes_total" : 655814,
+    "spend_total" : 13966.059999999998,
+    "spend_obama" : 9137.289999999999,
+    "spend_romney" : 4828.7699999999995,
+    "perc_votes_romney" : 0.6367,
+    "perc_votes_obama" : 0.3633,
+    "perc_spend_romney" : 0.3457503404682495,
+    "perc_spend_obama" : 0.6542496595317506
+  },
+  {
+    "state" : "WY",
+    "votes_romney" : 170962,
+    "votes_obama" : 69286,
+    "votes_total" : 240248,
+    "spend_total" : 66439.80999999998,
+    "spend_obama" : 58940.69999999999,
+    "spend_romney" : 7499.109999999999,
+    "perc_votes_romney" : 0.7116,
+    "perc_votes_obama" : 0.2884,
+    "perc_spend_romney" : 0.11287073217096799,
+    "perc_spend_obama" : 0.8871292678290321
+  }
+];
+
+
+
+
+
   // Default options
   var defaults = {
     // The styles for the state
@@ -139,7 +810,32 @@
     'stateSpecificLabelTextHoverStyles': {}
   };
   
-  
+  var getStateSpecificStyles = function(){
+      var stateSpecificStyles = {};  
+
+      function sort_by_spend(a,b) {
+        if (a.spend_total < b.spend_total) { return -1; }
+        if (a.spend_total > b.spend_total) { return 1; }
+        return 0;
+      }
+
+      allData.sort(sort_by_spend);
+
+      for(var i in allData){
+        stateSpecificStyles[allData[i].state] = {"fill":"blue"};
+
+          if(i>(allData.length/5)*4){ stateSpecificStyles[allData[i].state].fill = "red"; }
+          else if(i>(allData.length/5)*3){ stateSpecificStyles[allData[i].state].fill = "orange"; }
+          else if(i>(allData.length/5)*2){ stateSpecificStyles[allData[i].state].fill = "yellow"; }
+          else if(i>(allData.length/5)*1){ stateSpecificStyles[allData[i].state].fill = "yellowgreen"; }
+          else if(i>=(allData.length/5)*0){ stateSpecificStyles[allData[i].state].fill = "green"; }
+      }
+    return stateSpecificStyles;
+  };
+
+  defaults.stateSpecificStyles = getStateSpecificStyles(); 
+
+
   // Methods
   var methods = {
     /**
@@ -160,6 +856,14 @@
       this.scale = Math.min(xscale, yscale);
       this.labelAreaWidth = Math.ceil(LABELS_WIDTH/this.scale); // The actual width with the labels reversed scaled
       
+      this.getStateData = function(state){
+          for (var i in allData){
+            if (allData[i].state==state){
+              return allData[i];
+            }
+          }
+       }
+
       var paperWidthWithLabels = WIDTH + Math.max(0, this.labelAreaWidth - LABELS_WIDTH);
       // Create the Raphael instances
       this.paper = Raphael(this.element.get(0), paperWidthWithLabels, HEIGHT);//this.element.width(), this.element.height());
@@ -248,7 +952,6 @@
         LA: "M 602.20213,472.99473 L 601.17268,470.37851 L 600.02956,467.28625 L 596.7137,463.74511 L 597.62986,456.99488 L 597.51137,455.85345 L 596.24976,456.19555 L 588.01934,457.10836 L 562.99102,457.56728 L 562.30683,455.1726 L 563.21964,446.7169 L 566.53552,440.77105 L 571.56688,432.08003 L 570.99281,429.68201 L 572.2494,429.00116 L 572.70833,427.04867 L 570.42209,424.99274 L 570.3103,423.05029 L 568.47964,418.70478 L 568.02323,412.76393 L 558.2984,412.87741 L 539.0941,413.79191 L 516.88913,413.82048 L 516.9177,423.39405 L 517.60357,432.76758 L 518.28944,436.65416 L 520.80429,440.76937 L 521.71878,445.79908 L 526.06261,451.28601 L 526.29123,454.48673 L 526.9771,455.1726 L 526.29123,463.63164 L 523.31914,468.66133 L 524.9195,470.71894 L 524.23362,473.23378 L 523.54776,480.54971 L 522.17602,483.75042 L 522.29848,487.36687 L 526.98496,485.84672 L 535.06798,485.5234 L 545.41425,489.07993 L 551.88067,490.21156 L 555.59886,488.75661 L 558.83207,489.88824 L 562.06528,490.8582 L 562.87358,488.75661 L 559.64037,487.62499 L 557.0538,488.10997 L 554.30557,486.49337 C 554.30557,486.49337 554.46724,485.20008 555.11388,485.03842 C 555.76052,484.87676 558.18543,484.06846 558.18543,484.06846 L 559.96369,485.5234 L 561.74196,484.55344 L 564.97517,485.20008 L 566.43011,487.62499 L 566.75343,489.88824 L 571.27992,490.21156 L 573.05819,491.98982 L 572.24989,493.60643 L 570.9566,494.41473 L 572.57321,496.03133 L 580.97955,499.58786 L 584.53608,498.29458 L 585.50605,495.86967 L 588.09261,495.22303 L 589.87088,493.76809 L 591.16416,494.73805 L 591.97246,497.64794 L 589.70922,498.45624 L 590.35586,499.10288 L 593.75073,497.8096 L 596.01398,494.41473 L 596.82228,493.92975 L 594.72069,493.60643 L 595.52899,491.98982 L 595.36733,490.53488 L 597.46892,490.0499 L 598.60054,488.75661 L 599.24718,489.56491 C 599.24718,489.56491 599.08552,492.63646 599.89383,492.63646 C 600.70213,492.63646 604.097,493.28311 604.097,493.28311 L 608.13851,495.22303 L 609.10847,496.67798 L 612.01836,496.67798 L 613.14999,497.64794 L 615.41323,494.57639 L 615.41323,493.12144 L 614.11995,493.12144 L 610.72508,490.37322 L 604.9053,489.56491 L 601.67209,487.30167 L 602.80372,484.55344 L 605.06696,484.87676 L 605.22862,484.23012 L 603.45036,483.26016 L 603.45036,482.77517 L 606.68357,482.77517 L 608.46183,479.70363 L 607.16855,477.7637 L 606.84523,475.01547 L 605.39028,475.17713 L 603.45036,477.27872 L 602.80372,479.86529 L 599.73217,479.21864 L 598.7622,477.44038 L 600.54047,475.50045 L 602.56122,473.7222 z",
         VA: "M 828.90662,269.2457 L 828.76271,267.29867 L 835.21614,264.74879 L 834.44573,267.96663 L 831.52578,271.74574 L 831.10769,276.33156 L 831.56944,279.722 L 829.74147,284.70016 L 827.5772,286.6163 L 826.10686,281.97549 L 826.55275,276.52638 L 828.13975,272.34331 z M 831.18615,297.54706 L 773.01197,310.12249 L 735.585,315.40156 L 728.90667,315.02638 L 726.32142,316.95276 L 718.98229,317.17345 L 710.60018,318.15112 L 701.67396,319.10283 L 710.15465,314.15454 L 710.14153,312.07961 L 711.66158,309.93348 L 722.21536,298.43205 L 726.16208,302.90951 L 729.94509,303.87349 L 732.48855,302.73317 L 734.72577,301.42201 L 737.26238,302.76553 L 741.17655,301.33777 L 743.05328,296.78143 L 745.6542,297.32145 L 748.50944,295.1902 L 750.30871,295.6838 L 753.13592,292.00723 L 753.48417,289.92412 L 752.52051,288.64855 L 753.52328,286.78192 L 758.79755,274.50477 L 759.41432,268.76969 L 760.64321,268.24615 L 762.82174,270.68902 L 766.7576,270.38785 L 768.68681,262.81422 L 771.4808,262.25336 L 772.53055,259.51229 L 775.11037,257.16541 L 776.37834,254.8232 L 777.8822,251.47022 L 777.96713,246.40267 L 787.78864,250.22549 C 788.46949,250.56591 788.44474,245.44151 788.44474,245.44151 L 792.49505,246.81886 L 792.03305,249.44766 L 800.18916,252.38732 L 801.48203,254.18171 L 800.61409,257.86385 L 799.35101,259.18967 L 798.84509,260.93571 L 799.339,263.33843 L 801.29798,264.61681 L 805.21607,266.06202 L 808.16474,267.02998 L 813.02121,267.97209 L 815.17352,270.06055 L 818.36396,270.46308 L 819.23203,271.6631 L 818.79254,276.35318 L 820.16727,277.45573 L 819.68832,279.38612 L 820.91773,280.17589 L 820.69593,281.56049 L 818.00194,281.46555 L 818.0909,283.08107 L 820.37189,284.62394 L 820.49343,286.03584 L 822.26654,287.82122 L 822.75833,290.34535 L 820.20529,291.72666 L 821.77751,293.22096 L 827.57853,291.53513 z",
         DC: "M 801.75695,253.84384 L 800.67992,252.20717 L 799.66604,251.36463 L 800.7653,249.74841 L 802.99814,251.25941 z"
-      
       }
       
       // Create the actual objects
@@ -389,18 +1092,22 @@
       var labelBacking = this.labelShapes[stateName];
       var labelText = this.labelTexts[stateName];
       var labelHitArea = this.labelHitAreas[stateName]
-      
+      var stateDatas = this.getStateData(stateName);
+
       return {
         shape: stateShape, 
         hitArea: stateHitArea, 
         name: stateName, 
         labelBacking: labelBacking, 
         labelText: labelText, 
-        labelHitArea: labelHitArea
+        labelHitArea: labelHitArea,
+        stateData: stateDatas,
       };
     },
     
     
+
+
     
     /**
      * The mouseout handler

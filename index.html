@@ -1,26 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
-    <meta charset="utf-8">
-    <meta name="author" content="">
-    <title>U.S. Map</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>US Map</title>
+      <!-- Bootstrap Core CSS -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <!-- Custom CSS -->
+      <link href="css/scrolling-nav.css" rel="stylesheet">
+
+      <script src="js/jquery.js"></script>
+      <script src="js/raphael.js"></script>
+      <script src="js/jquery.usmap.js"></script>
+      <script src="js/plotly-latest.min.js"></script>
+      <!-- Bootstrap Core JavaScript -->
+      <script src="js/bootstrap.min.js"></script>
+
+      <!-- Scrolling Nav JavaScript -->
+      <script src="js/jquery.easing.min.js"></script>
+      <script src="js/scrolling-nav.js"></script>
+
+
   </head>
 
-  <script src="js/jquery.js"></script>
-  <script src="js/raphael.js"></script>
-  <script src="js/jquery.usmap.js"></script>
 
-  <div id="map" style="width: 700px; height: 500px;"></div>
-  <div id="clicked-state"></div>
+
+
+
+  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+      <!-- Navigation -->
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+          <div class="container">
+          </div>
+          <!-- /.container -->
+      </nav>
+
+      <section id="intro" class="intro-section" style="padding-top: 50px; padding-bottom: 00px; height: 50px">
+      <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1> Effectiveness of Campaign Spending </h1>
+                </div>
+            </div>
+        </div>
+      </section>
+      
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section" style="padding-top: 50px;">
+        <a class="btn btn-default page-scroll" style="visibility: hidden;" href="#spend_data" id="scroller">Hidden State Scroll</a>
+        <a class="btn btn-default page-scroll" style="visibility: hidden;" href="#page-top" id="intro_scroller">Hidden Top Scroll</a>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" style="padding-left: 150px;">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+        
+        <br><br>
+    </section>
+
+    <!-- Intro Section -->
+    <section id="spend_data" class="about-section">
+        <div class="container">
+            <div class="row">
+  
+                <div class="col-lg-12">
+
+                    <h1 id="clicked-state"></h1>
+                    <div id="spend_total"></div>
+                    <div><a onclick="$('#intro_scroller').click()">choose a new state</a></div>
+                    
+                    <div class="col-lg-6">
+                      <h4 id="spend_obama"></h4>
+                      <h4 id="votes_obama"></h4>
+                    </div>
+
+
+                    <div class="col-lg-6">
+                      <h4 id="spend_romney"></h4>
+                      <h4 id="votes_romney"></h4>
+                    </div>
+                    <br>
+                </div>
+                <div class="col-lg-12">
+                    <div id="spend_graph"></div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+  </body>
+
 
   <script>
-  $('#map').usmap({
+  setTimeout(function(){   
+    window.scrollTo(0, 0);
+   }, 500);
 
+    function abbrState(input, to){
+        
+        var states = [
+            ['Arizona', 'AZ'],
+            ['Alabama', 'AL'],
+            ['Alaska', 'AK'],
+            ['Arizona', 'AZ'],
+            ['Arkansas', 'AR'],
+            ['California', 'CA'],
+            ['Colorado', 'CO'],
+            ['Connecticut', 'CT'],
+            ['Delaware', 'DE'],
+            ['Florida', 'FL'],
+            ['Georgia', 'GA'],
+            ['Hawaii', 'HI'],
+            ['Idaho', 'ID'],
+            ['Illinois', 'IL'],
+            ['Indiana', 'IN'],
+            ['Iowa', 'IA'],
+            ['Kansas', 'KS'],
+            ['Kentucky', 'KY'],
+            ['Kentucky', 'KY'],
+            ['Louisiana', 'LA'],
+            ['Maine', 'ME'],
+            ['Maryland', 'MD'],
+            ['Massachusetts', 'MA'],
+            ['Michigan', 'MI'],
+            ['Minnesota', 'MN'],
+            ['Mississippi', 'MS'],
+            ['Missouri', 'MO'],
+            ['Montana', 'MT'],
+            ['Nebraska', 'NE'],
+            ['Nevada', 'NV'],
+            ['New Hampshire', 'NH'],
+            ['New Jersey', 'NJ'],
+            ['New Mexico', 'NM'],
+            ['New York', 'NY'],
+            ['North Carolina', 'NC'],
+            ['North Dakota', 'ND'],
+            ['Ohio', 'OH'],
+            ['Oklahoma', 'OK'],
+            ['Oregon', 'OR'],
+            ['Pennsylvania', 'PA'],
+            ['Rhode Island', 'RI'],
+            ['South Carolina', 'SC'],
+            ['South Dakota', 'SD'],
+            ['Tennessee', 'TN'],
+            ['Texas', 'TX'],
+            ['Utah', 'UT'],
+            ['Vermont', 'VT'],
+            ['Virginia', 'VA'],
+            ['Washington', 'WA'],
+            ['West Virginia', 'WV'],
+            ['Wisconsin', 'WI'],
+            ['Wyoming', 'WY'],
+        ];
+
+        if (to == 'abbr'){
+            input = input.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+            for(i = 0; i < states.length; i++){
+                if(states[i][0] == input){
+                    return(states[i][1]);
+                }
+            }    
+              } else if (to == 'name'){
+                  input = input.toUpperCase();
+                  for(i = 0; i < states.length; i++){
+                      if(states[i][1] == input){
+                          return(states[i][0]);
+                      }
+                  }    
+              }
+          }
+
+  $('#map').usmap({
     // The click action
     click: function(event, data) {
+      // Move visual down ti bar graph
+      $("#scroller").click();
+
       $('#clicked-state')
-        .text('You clicked: '+data.name)
-        .parent().effect('highlight', {color: '#C7F464'}, 2000);
+        .text(abbrState(data.name, 'name'));  
+
+      $('#spend_total')
+        .text('Total Campaign Spending: $'+ data.stateData.spend_total.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+      $('#spend_obama')
+        .text('Obama Spend: $'+ data.stateData.spend_obama.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+      
+      $('#votes_obama')
+        .text('Obama Votes: '+ data.stateData.votes_obama.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+
+      $('#spend_romney')
+        .text('Romney Spend: $'+ data.stateData.spend_romney.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+      $('#votes_romney')
+        .text('Romney Votes: '+ data.stateData.votes_romney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+
+      var spend_graph = {
+        x: ['Obama', 'Romney'],
+        y: [data.stateData.perc_spend_obama, data.stateData.perc_spend_romney],
+        name: 'Money Spent (%)',
+        type: 'bar'
+      };
+
+      var votes_graph = {
+        x: ['Obama', 'Romney'],
+        y: [data.stateData.perc_votes_obama, data.stateData.perc_votes_romney],
+        name: 'Popular Vote (%)',
+        type: 'bar'
+      };
+
+
+      var data = [spend_graph, votes_graph];
+
+      var layout = {barmode: 'group'};
+
+      Plotly.newPlot('spend_graph', data, layout);
+
     },
     stateStyles: {fill: 'blue'},
     stateHoverStyles: {fill: 'red'}
