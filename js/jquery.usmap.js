@@ -827,8 +827,8 @@
           if(i>(allData.length/5)*4){ stateSpecificStyles[allData[i].state].fill = "red"; }
           else if(i>(allData.length/5)*3){ stateSpecificStyles[allData[i].state].fill = "orange"; }
           else if(i>(allData.length/5)*2){ stateSpecificStyles[allData[i].state].fill = "yellow"; }
-          else if(i>(allData.length/5)*1){ stateSpecificStyles[allData[i].state].fill = "yellowgreen"; }
-          else if(i>=(allData.length/5)*0){ stateSpecificStyles[allData[i].state].fill = "green"; }
+          else if(i>(allData.length/5)*1){ stateSpecificStyles[allData[i].state].fill = "lightblue"; }
+          else if(i>=(allData.length/5)*0){ stateSpecificStyles[allData[i].state].fill = "blue"; }
       }
     return stateSpecificStyles;
   };
