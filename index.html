@@ -226,8 +226,42 @@
       Plotly.newPlot('spend_graph', data, layout);
 
     },
-    stateStyles: {fill: 'blue'},
-    stateHoverStyles: {fill: 'red'}
+    'mouseoverState': {
+        'OR' : function(event, data) {
+            $('#clicked-state')
+            .text('Click '+data.name+'');
+        }
+    },
+    stateStyles: {fill: 'green'},
+    stateHoverStyles: {fill: 'orange'},
+    stateSpecificHoverStyles: {
+      'MT': {fill: 'red'},
+      'NE': {fill: 'red'},
+      'NV': {fill: 'blue'},
+      'NH': {fill: 'blue'},
+      'NJ': {fill: 'blue'},
+      'NM': {fill: 'blue'},
+      'NY': {fill: 'blue'},
+      'NC': {fill: 'red'},
+      'ND': {fill: 'red'},
+      'OH': {fill: 'blue'},
+      'OK': {fill: 'red'},
+      'OR': {fill: 'blue'},
+      'PA': {fill: 'blue'},
+      'RI': {fill: 'blue'},
+      'SC': {fill: 'red'},
+      'SD': {fill: 'red'},
+      'TN': {fill: 'red'},
+      'TX': {fill: 'red'},
+      'UT': {fill: 'red'},
+      'VT': {fill: 'blue'},
+      'VA': {fill: 'blue'},
+      'WA': {fill: 'blue'},
+      'WV': {fill: 'red'},
+      'WI': {fill: 'blue'},
+      'WY': {fill: 'red'}
+    },
+    stateHoverAnimation: 100
   });
   </script>
 
